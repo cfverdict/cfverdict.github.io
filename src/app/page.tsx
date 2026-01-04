@@ -152,7 +152,10 @@ export default function Home() {
                     Hall of Fame
                   </h3>
                 </div>
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider">Top 10</span>
+                <span className="text-[10px] text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse"></span>
+                  Updated Daily
+                </span>
               </div>
               
               {/* Compact List: 5 items visible, scrollable or just 5 */}
