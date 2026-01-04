@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, BarChart2, Trophy, Share2, Github, Code } from 'lucide-react';
+import { Search, BarChart2, Trophy, Share2, Github, Code, ChevronRight, Medal } from 'lucide-react';
 import { motion } from 'framer-motion';
+import legendsData from '@/data/legends.json';
 
-const LEGENDS = ['tourist', 'Benq', 'Petr', 'Um_nik', 'jiangly'];
+const LEGENDS = legendsData;
 
 export default function Home() {
   const [handle, setHandle] = useState('');
@@ -22,39 +23,75 @@ export default function Home() {
     router.push(`/report?handle=${legend}`);
   };
 
+  const getRankStyle = (index: number) => {
+    if (index === 0) return "text-yellow-400 font-bold";
+    if (index === 1) return "text-slate-300 font-bold";
+    if (index === 2) return "text-amber-600 font-bold";
+    return "text-slate-500 font-mono";
+  };
+
+  const getRankIcon = (index: number) => {
+    if (index === 0) return <Medal className="w-5 h-5 text-yellow-400 fill-yellow-400/20" />;
+    if (index === 1) return <Medal className="w-5 h-5 text-slate-300 fill-slate-300/20" />;
+    if (index === 2) return <Medal className="w-5 h-5 text-amber-600 fill-amber-600/20" />;
+    return <span className="w-5 text-center">{index + 1}</span>;
+  };
+
+  const renderLegendItem = (legend: string, index: number) => (
+    <button
+      key={legend}
+      onClick={() => handleLegendClick(legend)}
+      className={`
+        w-full flex items-center justify-between px-4 py-2.5 
+        border-b border-slate-800/50 last:border-0
+        hover:bg-slate-800/50 transition-colors group text-left
+      `}
+    >
+      <div className="flex items-center gap-3">
+        <div className={`w-6 flex justify-center ${getRankStyle(index)}`}>
+          {getRankIcon(index)}
+        </div>
+        <span className={`font-medium truncate max-w-[120px] ${index === 0 ? 'text-red-500' : 'text-slate-200'}`}>
+          {legend}
+        </span>
+      </div>
+      <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors opacity-0 group-hover:opacity-100" />
+    </button>
+  );
+
   return (
-    <div className="min-h-screen bg-slate-950 text-white selection:bg-blue-500/30">
+    <div className="min-h-screen bg-slate-950 text-white selection:bg-blue-500/30 flex flex-col">
       {/* Background Gradients */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]" />
       </div>
 
-      <main className="relative z-10 container mx-auto px-4 py-20 flex flex-col items-center">
+      <main className="relative z-10 container mx-auto px-4 pt-12 pb-8 flex-1 flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
         {/* Hero Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto w-full mb-10"
         >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-sm text-slate-400 font-medium">
+          <div className="inline-block mb-3 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 font-medium">
             🚀 The 2025 Season Recap is here
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
               CF Verdict 2025
             </span>
           </h1>
-          <p className="text-xl text-slate-400 mb-10 leading-relaxed">
+          <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-2xl mx-auto">
             Visualize your competitive programming journey. <br className="hidden md:block" />
             Uncover your strengths, relive your best contests, and share your story.
           </p>
 
           {/* Search Box */}
-          <form onSubmit={handleSubmit} className="relative max-w-lg mx-auto group">
+          <form onSubmit={handleSubmit} className="relative max-w-md mx-auto group mb-12">
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-25 group-hover:opacity-50 transition duration-200 blur"></div>
-            <div className="relative flex items-center bg-slate-900 rounded-full border border-slate-800 p-2 shadow-2xl">
+            <div className="relative flex items-center bg-slate-900 rounded-full border border-slate-800 p-1.5 shadow-2xl">
               <Search className="ml-4 text-slate-500 w-5 h-5" />
               <input
                 type="text"
@@ -65,94 +102,111 @@ export default function Home() {
               />
               <button 
                 type="submit"
-                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all transform active:scale-95"
+                className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all transform active:scale-95"
               >
                 Generate
               </button>
             </div>
           </form>
-
-          {/* Hall of Fame / Quick Links */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-slate-500">
-            <span>Try legends:</span>
-            {LEGENDS.map((legend) => (
-              <button
-                key={legend}
-                onClick={() => handleLegendClick(legend)}
-                className="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-800 hover:decoration-blue-400 underline-offset-4"
-              >
-                {legend}
-              </button>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Features Grid */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-8 max-w-5xl w-full mb-20"
-        >
-          <FeatureCard 
-            icon={<BarChart2 className="w-6 h-6 text-blue-400" />}
-            title="Deep Analytics"
-            description="Analyze your rating progression, problem difficulty distribution, and tag mastery."
-          />
-          <FeatureCard 
-            icon={<Trophy className="w-6 h-6 text-yellow-400" />}
-            title="Highlight Moments"
-            description="Relive your best contest performances, longest streaks, and hardest solved problems."
-          />
-          <FeatureCard 
-            icon={<Share2 className="w-6 h-6 text-pink-400" />}
-            title="Shareable Report"
-            description="Generate a beautiful summary card perfect for sharing on Twitter or WeChat."
-          />
-        </motion.div>
+        {/* Content Grid: Features + Leaderboard */}
+        <div className="grid lg:grid-cols-12 gap-8 w-full max-w-6xl items-start">
+          
+          {/* Features (Left on Desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-7 grid sm:grid-cols-3 lg:grid-cols-1 gap-4"
+          >
+            <FeatureCard 
+              icon={<BarChart2 className="w-5 h-5 text-blue-400" />}
+              title="Deep Analytics"
+              description="Analyze your rating progression and problem difficulty distribution."
+            />
+            <FeatureCard 
+              icon={<Trophy className="w-5 h-5 text-yellow-400" />}
+              title="Highlight Moments"
+              description="Relive your best contest performances and longest streaks."
+            />
+            <FeatureCard 
+              icon={<Share2 className="w-5 h-5 text-pink-400" />}
+              title="Shareable Report"
+              description="Generate a beautiful summary card perfect for sharing."
+            />
+          </motion.div>
 
-        {/* Footer */}
-        <footer className="mt-auto py-8 text-center text-slate-600 text-sm flex flex-col items-center gap-4">
-          <div className="flex gap-6">
-            <a 
-              href="https://github.com/cfverdict/cfverdict.github.io" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-slate-400 transition-colors flex items-center gap-2"
-            >
-              <Github className="w-4 h-4" /> GitHub
-            </a>
-            <a 
-              href="https://codeforces.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-slate-400 transition-colors flex items-center gap-2"
-            >
-              <Code className="w-4 h-4" /> Codeforces
-            </a>
-          </div>
-          <div className="space-y-1">
-            <p>© 2025 CF Verdict. Not affiliated with Codeforces.</p>
-            <p>
-              Released under the <a href="https://github.com/cfverdict/cfverdict.github.io/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">MIT License</a>.
-            </p>
-          </div>
-        </footer>
+          {/* Leaderboard (Right on Desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="lg:col-span-5 w-full"
+          >
+            <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 overflow-hidden">
+              <div className="px-5 py-3 border-b border-slate-800/50 flex items-center justify-between bg-slate-900/50">
+                <div className="flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-yellow-500" />
+                  <h3 className="text-sm font-semibold text-slate-200 tracking-wide">
+                    Hall of Fame
+                  </h3>
+                </div>
+                <span className="text-[10px] text-slate-500 uppercase tracking-wider">Top 10</span>
+              </div>
+              
+              {/* Compact List: 5 items visible, scrollable or just 5 */}
+              <div className="max-h-[320px] overflow-y-auto custom-scrollbar">
+                 {LEGENDS.map((legend, index) => renderLegendItem(legend, index))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </main>
+
+      {/* Footer */}
+      <footer className="py-6 text-center text-slate-600 text-xs flex flex-col items-center gap-3 border-t border-slate-900/50 bg-slate-950/50 backdrop-blur-sm">
+        <div className="flex gap-6">
+          <a 
+            href="https://github.com/cfverdict/cfverdict.github.io" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-slate-400 transition-colors flex items-center gap-2"
+          >
+            <Github className="w-3 h-3" /> GitHub
+          </a>
+          <a 
+            href="https://codeforces.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-slate-400 transition-colors flex items-center gap-2"
+          >
+            <Code className="w-3 h-3" /> Codeforces
+          </a>
+        </div>
+        <div className="space-y-1">
+          <p>© 2025 CF Verdict. Not affiliated with Codeforces.</p>
+          <p>
+            Released under the <a href="https://github.com/cfverdict/cfverdict.github.io/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">MIT License</a>.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-colors backdrop-blur-sm">
-      <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4">
+    <div className="p-4 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-slate-700 transition-colors backdrop-blur-sm flex items-start gap-4 lg:items-center">
+      <div className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center shrink-0">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold mb-2 text-slate-200">{title}</h3>
-      <p className="text-slate-400 leading-relaxed">
-        {description}
-      </p>
+      <div>
+        <h3 className="text-base font-semibold mb-1 text-slate-200">{title}</h3>
+        <p className="text-sm text-slate-400 leading-snug">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
