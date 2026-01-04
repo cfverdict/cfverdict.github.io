@@ -11,7 +11,7 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (handle.trim()) {
-      router.push(`/report/${handle.trim()}`);
+      router.push(`/report?handle=${handle.trim()}`);
     }
   };
 
