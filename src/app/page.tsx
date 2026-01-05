@@ -61,48 +61,48 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white selection:bg-blue-500/30 flex flex-col">
-      {/* Background Gradients */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* Background Gradients - Hidden on mobile to improve performance and readability */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]" />
       </div>
 
-      <main className="relative z-10 container mx-auto px-4 pt-12 pb-8 flex-1 flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
+      <main className="relative z-10 container mx-auto px-4 pt-8 pb-6 md:pt-12 md:pb-8 flex-1 flex flex-col items-center justify-center min-h-[calc(100vh-60px)]">
         {/* Hero Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto w-full mb-10"
+          className="text-center max-w-4xl mx-auto w-full mb-8 md:mb-10"
         >
-          <div className="inline-block mb-3 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 font-medium">
+          <div className="inline-block mb-3 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] md:text-xs text-slate-400 font-medium">
             🚀 2025 赛季年度总结已就绪
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-6xl font-bold mb-3 md:mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
               CF Verdict 2025
             </span>
           </h1>
-          <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-slate-400 mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto px-2">
             可视化你的算法竞赛之旅。<br className="hidden md:block" />
-            发掘你的强项，重温高光时刻，并与社区分享你的故事。
+            发掘你的强项，重温高光时刻。
           </p>
 
           {/* Search Box */}
-          <form onSubmit={handleSubmit} className="relative max-w-md mx-auto group mb-12">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-25 group-hover:opacity-50 transition duration-200 blur"></div>
+          <form onSubmit={handleSubmit} className="relative max-w-md mx-auto group mb-8 md:mb-12 w-full">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-25 group-hover:opacity-50 transition duration-200 blur hidden md:block"></div>
             <div className="relative flex items-center bg-slate-900 rounded-full border border-slate-800 p-1.5 shadow-2xl">
-              <Search className="ml-4 text-slate-500 w-5 h-5" />
+              <Search className="ml-3 md:ml-4 text-slate-500 w-4 h-4 md:w-5 md:h-5" />
               <input
                 type="text"
                 value={handle}
                 onChange={(e) => setHandle(e.target.value)}
                 placeholder="输入 Codeforces Handle..."
-                className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-slate-500 px-4 py-2 outline-none"
+                className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-slate-500 px-3 md:px-4 py-2 outline-none text-sm md:text-base w-full min-w-0"
               />
               <button 
                 type="submit"
-                className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all transform active:scale-95"
+                className="px-4 md:px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all transform active:scale-95 text-sm md:text-base whitespace-nowrap"
               >
                 生成报告
               </button>
@@ -111,14 +111,14 @@ export default function Home() {
         </motion.div>
 
         {/* Content Grid: Features + Leaderboard */}
-        <div className="grid lg:grid-cols-12 gap-8 w-full max-w-6xl items-start">
+        <div className="grid lg:grid-cols-12 gap-6 md:gap-8 w-full max-w-6xl items-start">
           
-          {/* Features (Left on Desktop) */}
+          {/* Features (Left on Desktop, Top on Mobile) */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 grid sm:grid-cols-3 lg:grid-cols-1 gap-4"
+            className="lg:col-span-7 grid gap-3 md:gap-4"
           >
             <FeatureCard 
               icon={<BarChart2 className="w-5 h-5 text-blue-400" />}
@@ -137,7 +137,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Leaderboard (Right on Desktop) */}
+          {/* Leaderboard (Right on Desktop, Bottom on Mobile) */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -168,7 +168,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 text-center text-slate-600 text-xs flex flex-col items-center gap-3 border-t border-slate-900/50 bg-slate-950/50 backdrop-blur-sm">
+      <footer className="py-6 text-center text-slate-600 text-xs flex flex-col items-center gap-3 border-t border-slate-900/50 bg-slate-950/50 backdrop-blur-sm mt-auto">
         <div className="flex gap-6">
           <a 
             href="https://github.com/cfverdict/cfverdict.github.io" 
@@ -205,8 +205,8 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
         {icon}
       </div>
       <div>
-        <h3 className="text-base font-semibold mb-1 text-slate-200">{title}</h3>
-        <p className="text-sm text-slate-400 leading-snug">
+        <h3 className="text-sm md:text-base font-semibold mb-1 text-slate-200">{title}</h3>
+        <p className="text-xs md:text-sm text-slate-400 leading-snug">
           {description}
         </p>
       </div>
