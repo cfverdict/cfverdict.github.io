@@ -76,7 +76,7 @@ export default function Home() {
           className="text-center max-w-4xl mx-auto w-full mb-10"
         >
           <div className="inline-block mb-3 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 font-medium">
-            🚀 The 2025 Season Recap is here
+            🚀 2025 赛季年度总结已就绪
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
@@ -84,8 +84,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Visualize your competitive programming journey. <br className="hidden md:block" />
-            Uncover your strengths, relive your best contests, and share your story.
+            可视化你的算法竞赛之旅。<br className="hidden md:block" />
+            发掘你的强项，重温高光时刻，并与社区分享你的故事。
           </p>
 
           {/* Search Box */}
@@ -97,14 +97,14 @@ export default function Home() {
                 type="text"
                 value={handle}
                 onChange={(e) => setHandle(e.target.value)}
-                placeholder="Enter Codeforces handle..."
+                placeholder="输入 Codeforces Handle..."
                 className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-slate-500 px-4 py-2 outline-none"
               />
               <button 
                 type="submit"
                 className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all transform active:scale-95"
               >
-                Generate
+                生成报告
               </button>
             </div>
           </form>
@@ -122,18 +122,18 @@ export default function Home() {
           >
             <FeatureCard 
               icon={<BarChart2 className="w-5 h-5 text-blue-400" />}
-              title="Deep Analytics"
-              description="Analyze your rating progression and problem difficulty distribution."
+              title="深度数据分析"
+              description="全方位解析你的 Rating 变化趋势、题目难度分布以及算法标签掌握情况。"
             />
             <FeatureCard 
               icon={<Trophy className="w-5 h-5 text-yellow-400" />}
-              title="Highlight Moments"
-              description="Relive your best contest performances and longest streaks."
+              title="年度高光时刻"
+              description="重温你表现最好的一场比赛，回顾最长连续刷题天数和解决的最难题目。"
             />
             <FeatureCard 
               icon={<Share2 className="w-5 h-5 text-pink-400" />}
-              title="Shareable Report"
-              description="Generate a beautiful summary card perfect for sharing."
+              title="一键生成分享"
+              description="生成精美的年度总结卡片，完美适配朋友圈、推特等社交媒体分享。"
             />
           </motion.div>
 
@@ -149,12 +149,12 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-yellow-500" />
                   <h3 className="text-sm font-semibold text-slate-200 tracking-wide">
-                    Hall of Fame
+                    名人堂
                   </h3>
                 </div>
                 <span className="text-[10px] text-slate-500 uppercase tracking-wider flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse"></span>
-                  Updated Daily
+                  每日更新
                 </span>
               </div>
               
