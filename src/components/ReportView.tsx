@@ -4,6 +4,7 @@ import { CFUser } from '@/types/cf';
 import { YearStats } from '@/lib/stats';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import UserHandle from './UserHandle';
 
 export default function ReportView({ user, stats }: { user: CFUser; stats: YearStats }) {
   // Prepare chart data
@@ -30,7 +31,9 @@ export default function ReportView({ user, stats }: { user: CFUser; stats: YearS
             alt={user.handle} 
             className="w-32 h-32 rounded-full mx-auto border-4 border-blue-500"
           />
-          <h1 className="text-4xl font-bold">{user.handle}</h1>
+          <h1 className="text-4xl font-bold">
+            <UserHandle handle={user.handle} rating={user.rating} />
+          </h1>
           <p className="text-xl text-slate-400">{user.rank} · Rating {user.rating}</p>
         </motion.div>
 

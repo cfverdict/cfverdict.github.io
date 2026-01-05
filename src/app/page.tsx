@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Search, BarChart2, Trophy, Share2, Github, Code, ChevronRight, Medal } from 'lucide-react';
 import { motion } from 'framer-motion';
 import legendsData from '@/data/legends.json';
+import UserHandle from '@/components/UserHandle';
 
 const LEGENDS = legendsData;
 
@@ -37,10 +38,10 @@ export default function Home() {
     return <span className="w-5 text-center">{index + 1}</span>;
   };
 
-  const renderLegendItem = (legend: string, index: number) => (
+  const renderLegendItem = (legend: { handle: string; rating: number }, index: number) => (
     <button
-      key={legend}
-      onClick={() => handleLegendClick(legend)}
+      key={legend.handle}
+      onClick={() => handleLegendClick(legend.handle)}
       className={`
         w-full flex items-center justify-between px-4 py-2.5 
         border-b border-slate-800/50 last:border-0
@@ -51,11 +52,12 @@ export default function Home() {
         <div className={`w-6 flex justify-center ${getRankStyle(index)}`}>
           {getRankIcon(index)}
         </div>
-        <span className={`font-medium truncate max-w-[120px] ${index === 0 ? 'text-red-500' : 'text-slate-200'}`}>
-          {legend}
-        </span>
+        <UserHandle handle={legend.handle} rating={legend.rating} className="truncate max-w-[120px]" />
       </div>
-      <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors opacity-0 group-hover:opacity-100" />
+      <div className="flex items-center gap-3">
+        <span className="text-xs text-slate-500 font-mono hidden sm:block">{legend.rating}</span>
+        <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors opacity-0 group-hover:opacity-100" />
+      </div>
     </button>
   );
 
@@ -149,7 +151,7 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-yellow-500" />
                   <h3 className="text-sm font-semibold text-slate-200 tracking-wide">
-                    名人堂
+                    TOP 10
                   </h3>
                 </div>
                 <span className="text-[10px] text-slate-500 uppercase tracking-wider flex items-center gap-1">

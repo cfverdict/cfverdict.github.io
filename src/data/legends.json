@@ -1,12 +1,42 @@
 [
-  "Kevin114514",
-  "Benq",
-  "jiangly",
-  "ecnerwala",
-  "ksun48",
-  "tourist",
-  "VivaciousAubergine",
-  "Radewoosh",
-  "qiuzx",
-  "Nachia"
+  {
+    "handle": "tourist",
+    "rating": 3979
+  },
+  {
+    "handle": "Benq",
+    "rating": 3823
+  },
+  {
+    "handle": "Petr",
+    "rating": 3756
+  },
+  {
+    "handle": "Um_nik",
+    "rating": 3689
+  },
+  {
+    "handle": "jiangly",
+    "rating": 3654
+  },
+  {
+    "handle": "Radewoosh",
+    "rating": 3621
+  },
+  {
+    "handle": "ecnerwala",
+    "rating": 3598
+  },
+  {
+    "handle": "mnbvmar",
+    "rating": 3567
+  },
+  {
+    "handle": "ksun48",
+    "rating": 3543
+  },
+  {
+    "handle": "maroonrk",
+    "rating": 3512
+  }
 ]

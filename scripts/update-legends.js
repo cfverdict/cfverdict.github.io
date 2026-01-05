@@ -1,10 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// Polyfill fetch for older Node environments if needed, 
-// though Node 18+ has native fetch. GitHub Actions usually use latest Node.
-// If fetch is missing, we might need 'node-fetch', but let's try native first.
-
 const CF_API_URL = 'https://codeforces.com/api/user.ratedList?activeOnly=true&includeRetired=false';
 const OUTPUT_FILE = path.join(__dirname, '../src/data/legends.json');
 
@@ -23,11 +19,13 @@ async function updateLegends() {
       throw new Error(`CF API Error: ${data.comment}`);
     }
 
-    // Get top 10 handles
-    // The API returns users sorted by rating descending by default
+    // Get top 10 users with rating
     const top10 = data.result
       .slice(0, 10)
-      .map(user => user.handle);
+      .map(user => ({
+        handle: user.handle,
+        rating: user.rating
+      }));
 
     console.log('Top 10 handles:', top10);
 
