@@ -1,9 +1,5 @@
 [
   {
-    "handle": "Benq",
-    "rating": 3792
-  },
-  {
     "handle": "jiangly",
     "rating": 3710
   },
@@ -14,10 +10,6 @@
   {
     "handle": "Kevin114514",
     "rating": 3658
-  },
-  {
-    "handle": "VivaciousAubergine",
-    "rating": 3533
   },
   {
     "handle": "tourist",
@@ -38,5 +30,13 @@
   {
     "handle": "maroonrk",
     "rating": 3397
+  },
+  {
+    "handle": "hos.lyric",
+    "rating": 3377
+  },
+  {
+    "handle": "Ormlis",
+    "rating": 3357
   }
 ]
