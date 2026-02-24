@@ -1,11 +1,15 @@
 [
   {
     "handle": "ecnerwala",
-    "rating": 3715
+    "rating": 3747
+  },
+  {
+    "handle": "tourist",
+    "rating": 3718
   },
   {
     "handle": "jiangly",
-    "rating": 3664
+    "rating": 3654
   },
   {
     "handle": "VivaciousAubergine",
@@ -13,27 +17,23 @@
   },
   {
     "handle": "Kevin114514",
-    "rating": 3604
+    "rating": 3567
   },
   {
-    "handle": "tourist",
-    "rating": 3592
+    "handle": "ksun48",
+    "rating": 3493
   },
   {
     "handle": "maroonrk",
     "rating": 3423
   },
   {
-    "handle": "ksun48",
-    "rating": 3408
-  },
-  {
-    "handle": "turmax",
-    "rating": 3387
-  },
-  {
     "handle": "Um_nik",
     "rating": 3376
+  },
+  {
+    "handle": "Radewoosh",
+    "rating": 3367
   },
   {
     "handle": "hos.lyric",
