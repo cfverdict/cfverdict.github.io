@@ -12,10 +12,6 @@
     "rating": 3629
   },
   {
-    "handle": "jiangly",
-    "rating": 3616
-  },
-  {
     "handle": "turmax",
     "rating": 3559
   },
@@ -28,15 +24,19 @@
     "rating": 3366
   },
   {
-    "handle": "maroonrk",
-    "rating": 3290
-  },
-  {
     "handle": "StarSilk",
     "rating": 3289
   },
   {
     "handle": "jiangbowen",
     "rating": 3259
+  },
+  {
+    "handle": "Ormlis",
+    "rating": 3245
+  },
+  {
+    "handle": "jeroenodb",
+    "rating": 3236
   }
 ]
