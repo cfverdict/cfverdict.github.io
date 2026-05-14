@@ -4,14 +4,6 @@
     "rating": 3611
   },
   {
-    "handle": "jiangly",
-    "rating": 3583
-  },
-  {
-    "handle": "strapple",
-    "rating": 3515
-  },
-  {
     "handle": "tourist",
     "rating": 3470
   },
@@ -38,5 +30,13 @@
   {
     "handle": "heuristica",
     "rating": 3322
+  },
+  {
+    "handle": "Ormlis",
+    "rating": 3305
+  },
+  {
+    "handle": "jiangbowen",
+    "rating": 3259
   }
 ]
