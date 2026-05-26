@@ -24,10 +24,6 @@
     "rating": 3378
   },
   {
-    "handle": "heuristica",
-    "rating": 3322
-  },
-  {
     "handle": "ecnerwala",
     "rating": 3275
   },
@@ -38,5 +34,9 @@
   {
     "handle": "ksun48",
     "rating": 3260
+  },
+  {
+    "handle": "Ormlis",
+    "rating": 3258
   }
 ]
