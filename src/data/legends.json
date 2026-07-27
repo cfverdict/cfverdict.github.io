@@ -1,5 +1,9 @@
 [
   {
+    "handle": "Benq",
+    "rating": 3857
+  },
+  {
     "handle": "jiangly",
     "rating": 3812
   },
@@ -13,30 +17,26 @@
   },
   {
     "handle": "Kevin114514",
-    "rating": 3438
+    "rating": 3510
   },
   {
     "handle": "Um_nik",
     "rating": 3389
   },
   {
+    "handle": "strapple",
+    "rating": 3308
+  },
+  {
     "handle": "turmax",
-    "rating": 3376
+    "rating": 3303
   },
   {
     "handle": "Nachia",
     "rating": 3248
   },
   {
-    "handle": "ecnerwala",
-    "rating": 3191
-  },
-  {
     "handle": "ksun48",
-    "rating": 3162
-  },
-  {
-    "handle": "jeroenodb",
-    "rating": 3139
+    "rating": 3208
   }
 ]
