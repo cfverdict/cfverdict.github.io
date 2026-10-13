@@ -1,9 +1,5 @@
 [
   {
-    "handle": "Benq",
-    "rating": 3676
-  },
-  {
     "handle": "jiangly",
     "rating": 3670
   },
@@ -32,11 +28,15 @@
     "rating": 3324
   },
   {
-    "handle": "jiangbowen",
-    "rating": 3291
-  },
-  {
     "handle": "turmax",
     "rating": 3282
+  },
+  {
+    "handle": "zjy2008",
+    "rating": 3177
+  },
+  {
+    "handle": "Elysion",
+    "rating": 3161
   }
 ]
